@@ -1,0 +1,7 @@
+This project uses images of credit card logos.
+These logos are trademarks of their respective owners.
+Their use in this project is for educational and identification purposes only and does not imply endorsement.
+
+- Visa logo: Trademark of Visa Inc.
+- Mastercard logo: Trademark of Mastercard Inc.
+- American Express logo: Trademark of American Express Company.
