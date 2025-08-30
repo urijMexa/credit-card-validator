@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a36dab78-5cf7-4fae-be37-613fad7cf93f" name="Changes" comment="" />
+    <list default="true" id="a36dab78-5cf7-4fae-be37-613fad7cf93f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/gh-pages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/gh-pages.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +55,7 @@
       <updated>1756543744499</updated>
       <workItem from="1756543747072" duration="5315000" />
       <workItem from="1756549359148" duration="18000" />
-      <workItem from="1756549563856" duration="1872000" />
+      <workItem from="1756549563856" duration="2769000" />
     </task>
     <servers />
   </component>

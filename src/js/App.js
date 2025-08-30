@@ -16,11 +16,10 @@ export default class App {
 
     onSubmit(e) {
         e.preventDefault();
+
         const cardNumber = this.input.value;
 
-        // Сбрасываем предыдущие стили
         this.input.classList.remove('valid-input', 'invalid-input');
-        this.message.style.display = 'none';
 
         if (isValid(cardNumber)) {
             this.input.classList.add('valid-input');
@@ -37,12 +36,16 @@ export default class App {
         const cardNumber = this.input.value;
         const cardType = getCardType(cardNumber);
 
-        this.cardLogos.forEach(logo => {
+        this.cardLogos.forEach((logo) => {
             if (cardType && logo.id === cardType) {
                 logo.classList.add('active');
             } else {
                 logo.classList.remove('active');
             }
         });
+
+        this.message.className = 'message';
+        this.message.textContent = '';
+        this.input.classList.remove('valid-input', 'invalid-input');
     }
 }
