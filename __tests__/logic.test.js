@@ -1,18 +1,19 @@
 import isValid from '../src/js/Validator';
 import getCardType from '../src/js/CardDetector';
 
+// Тесты для Validator.js (алгоритм Луна)
 describe('Luhn Algorithm Validator', () => {
   test('should return true for valid card numbers', () => {
     expect(isValid('49927398716')).toBe(true);
     expect(isValid('5454545454545454')).toBe(true);
   });
   test('should return false for invalid card numbers', () => {
-    expect(isValid('49927398717')).toBe(false); // Корректный невалидный номер
-    // ЗАМЕНЕН ОШИБОЧНЫЙ НОМЕР НА ГАРАНТИРОВАННО НЕВАЛИДНЫЙ
+    expect(isValid('49927398717')).toBe(false);
     expect(isValid('1234567812345678')).toBe(false);
   });
 });
 
+// Тесты для CardDetector.js
 describe('Card Type Detector', () => {
   test('should detect Visa', () => {
     expect(getCardType('4111111111111111')).toBe('visa');
@@ -40,3 +41,5 @@ describe('Card Type Detector', () => {
     expect(getCardType('1111111111111111')).toBe(null);
   });
 });
+
+// строка
