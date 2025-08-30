@@ -3,12 +3,13 @@ import getCardType from '../src/js/CardDetector';
 
 describe('Luhn Algorithm Validator', () => {
   test('should return true for valid card numbers', () => {
-    expect(isValid('49927398716')).toBe(true); // Valid checksum
+    expect(isValid('49927398716')).toBe(true);
     expect(isValid('5454545454545454')).toBe(true);
   });
   test('should return false for invalid card numbers', () => {
-    expect(isValid('49927398717')).toBe(false); // Invalid checksum
-    expect(isValid('1234567812345670')).toBe(false);
+    expect(isValid('49927398717')).toBe(false); // Корректный невалидный номер
+    // ЗАМЕНЕН ОШИБОЧНЫЙ НОМЕР НА ГАРАНТИРОВАННО НЕВАЛИДНЫЙ
+    expect(isValid('1234567812345678')).toBe(false);
   });
 });
 
