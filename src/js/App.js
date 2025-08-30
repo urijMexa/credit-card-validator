@@ -1,3 +1,4 @@
+
 import isValid from './Validator';
 import getCardType from './CardDetector';
 
@@ -16,7 +17,6 @@ export default class App {
 
     onSubmit(e) {
         e.preventDefault();
-
         const cardNumber = this.input.value;
 
         this.input.classList.remove('valid-input', 'invalid-input');
@@ -24,11 +24,11 @@ export default class App {
         if (isValid(cardNumber)) {
             this.input.classList.add('valid-input');
             this.message.textContent = 'Card number is valid';
-            this.message.className = 'message valid';
+            this.message.className = 'message visible valid';
         } else {
             this.input.classList.add('invalid-input');
             this.message.textContent = 'Card number is invalid';
-            this.message.className = 'message invalid';
+            this.message.className = 'message visible invalid';
         }
     }
 

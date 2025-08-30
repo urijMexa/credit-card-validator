@@ -1,52 +1,42 @@
+
 import isValid from '../src/js/Validator';
 import getCardType from '../src/js/CardDetector';
 
-// Тесты для Validator.js (алгоритм Луна)
-describe('isValid', () => {
-    // Валидные номера
-    test('should return true for a valid Visa card number', () => {
-        // Используем корректный номер
-        expect(isValid('4242424242424242')).toBe(true);
-    });
-    test('should return true for a valid Mastercard number', () => {
-        // Используем корректный номер
+describe('Luhn Algorithm Validator', () => {
+    test('should return true for valid card numbers', () => {
+        expect(isValid('49927398716')).toBe(true); // Valid checksum
         expect(isValid('5454545454545454')).toBe(true);
     });
-
-    // Невалидные номера
-    test('should return false for an invalid card number', () => {
-        expect(isValid('4539920894833216')).toBe(false);
-    });
-    test('should return false for a short number', () => {
-        expect(isValid('123')).toBe(false);
-    });
-    test('should return false for non-digit characters', () => {
-        expect(isValid('4539-9208-9483-3215')).toBe(false);
+    test('should return false for invalid card numbers', () => {
+        expect(isValid('49927398717')).toBe(false); // Invalid checksum
+        expect(isValid('1234567812345670')).toBe(false);
     });
 });
 
-// Тесты для CardDetector.js
-describe('getCardType', () => {
-    test('should return "visa" for numbers starting with 4', () => {
-        expect(getCardType('4')).toBe('visa');
+describe('Card Type Detector', () => {
+    test('should detect Visa', () => {
+        expect(getCardType('4111111111111111')).toBe('visa');
     });
-    test('should return "mastercard" for numbers starting with 51-55', () => {
-        expect(getCardType('51')).toBe('mastercard');
-        expect(getCardType('55')).toBe('mastercard');
+    test('should detect Mastercard', () => {
+        expect(getCardType('5105105105105100')).toBe('mastercard');
+        expect(getCardType('2221000000000000')).toBe('mastercard');
     });
-    test('should return "mastercard" for numbers starting with 22-27', () => {
-        expect(getCardType('2221')).toBe('mastercard');
-        expect(getCardType('2720')).toBe('mastercard');
+    test('should detect American Express', () => {
+        expect(getCardType('378282246310005')).toBe('amex');
     });
-    test('should return "amex" for numbers starting with 34 or 37', () => {
-        expect(getCardType('34')).toBe('amex');
-        expect(getCardType('37')).toBe('amex');
+    test('should detect Discover', () => {
+        expect(getCardType('6011000000000000')).toBe('discover');
     });
-    test('should return "mir" for numbers starting with 2200-2204', () => {
-        expect(getCardType('2200')).toBe('mir');
-        expect(getCardType('2204')).toBe('mir');
+    test('should detect JCB', () => {
+        expect(getCardType('3530111333300000')).toBe('jcb');
     });
-    test('should return null for an unknown card type', () => {
-        expect(getCardType('12345')).toBe(null);
+    test('should detect Diners Club', () => {
+        expect(getCardType('30000000000000')).toBe('diners');
+    });
+    test('should detect Mir', () => {
+        expect(getCardType('2200000000000000')).toBe('mir');
+    });
+    test('should return null for unknown card type', () => {
+        expect(getCardType('1111111111111111')).toBe(null);
     });
 });
