@@ -1,51 +1,50 @@
-
 import isValid from './Validator';
 import getCardType from './CardDetector';
 
 export default class App {
-    constructor() {
-        this.form = document.getElementById('card-form');
-        this.input = document.getElementById('card-number');
-        this.message = document.getElementById('message');
-        this.cardLogos = document.querySelectorAll('.card-logo');
+  constructor() {
+    this.form = document.getElementById('card-form');
+    this.input = document.getElementById('card-number');
+    this.message = document.getElementById('message');
+    this.cardLogos = document.querySelectorAll('.card-logo');
+  }
+
+  init() {
+    this.form.addEventListener('submit', this.onSubmit.bind(this));
+    this.input.addEventListener('input', this.onInput.bind(this));
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const cardNumber = this.input.value;
+
+    this.input.classList.remove('valid-input', 'invalid-input');
+
+    if (isValid(cardNumber)) {
+      this.input.classList.add('valid-input');
+      this.message.textContent = 'Card number is valid';
+      this.message.className = 'message visible valid';
+    } else {
+      this.input.classList.add('invalid-input');
+      this.message.textContent = 'Card number is invalid';
+      this.message.className = 'message visible invalid';
     }
+  }
 
-    init() {
-        this.form.addEventListener('submit', this.onSubmit.bind(this));
-        this.input.addEventListener('input', this.onInput.bind(this));
-    }
+  onInput() {
+    const cardNumber = this.input.value;
+    const cardType = getCardType(cardNumber);
 
-    onSubmit(e) {
-        e.preventDefault();
-        const cardNumber = this.input.value;
+    this.cardLogos.forEach((logo) => {
+      if (cardType && logo.id === cardType) {
+        logo.classList.add('active');
+      } else {
+        logo.classList.remove('active');
+      }
+    });
 
-        this.input.classList.remove('valid-input', 'invalid-input');
-
-        if (isValid(cardNumber)) {
-            this.input.classList.add('valid-input');
-            this.message.textContent = 'Card number is valid';
-            this.message.className = 'message visible valid';
-        } else {
-            this.input.classList.add('invalid-input');
-            this.message.textContent = 'Card number is invalid';
-            this.message.className = 'message visible invalid';
-        }
-    }
-
-    onInput() {
-        const cardNumber = this.input.value;
-        const cardType = getCardType(cardNumber);
-
-        this.cardLogos.forEach((logo) => {
-            if (cardType && logo.id === cardType) {
-                logo.classList.add('active');
-            } else {
-                logo.classList.remove('active');
-            }
-        });
-
-        this.message.className = 'message';
-        this.message.textContent = '';
-        this.input.classList.remove('valid-input', 'invalid-input');
-    }
+    this.message.className = 'message';
+    this.message.textContent = '';
+    this.input.classList.remove('valid-input', 'invalid-input');
+  }
 }

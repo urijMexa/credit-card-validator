@@ -10,6 +10,6 @@ import './assets/img/diners.png';
 import './assets/img/mir.png';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const app = new App();
-    app.init();
+  const app = new App();
+  app.init();
 });
