@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -48,6 +49,15 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.card-input.valid-input {
+    border: 2px solid #5cb85c;
+}
+
+.card-input.invalid-input {
+    border: 2px solid #a94442;
 }
 
 .validate-btn {
@@ -70,24 +80,18 @@ body {
     display: none;
 }
 
-.message.valid {
+.message.visible {
     display: block;
+}
+
+.message.valid {
     color: #3c763d;
     background-color: #dff0d8;
     border: 1px solid #d6e9c6;
 }
 
 .message.invalid {
-    display: block;
     color: #a94442;
     background-color: #f2dede;
     border: 1px solid #ebccd1;
-}
-
-.card-input.valid-input {
-    border-color: #3c763d;
-}
-
-.card-input.invalid-input {
-    border-color: #a94442;
 }
